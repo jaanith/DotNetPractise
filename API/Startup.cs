@@ -18,7 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using API.Extentions;
+using API.Extensions;
 using API.Middleware;
 
 namespace API
