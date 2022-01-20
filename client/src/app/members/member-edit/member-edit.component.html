@@ -19,9 +19,9 @@
                     <strong>Age:</strong>
                     <p>{{member.age}} years old</p>
                     <strong>Last active:</strong>
-                    <p>{{member.lastActive}}</p>
+                    <p>{{member.lastActive| timeago}}</p>
                     <strong>Member since:</strong>
-                    <p>{{member.created}}</p>
+                    <p>{{member.created | date:'dd.MM.yyyy'}}</p>
                 </div>
             </div>
             <div class="card-footer">
