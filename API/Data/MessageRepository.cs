@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
+using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
@@ -95,19 +96,10 @@ namespace API.Data
                     && m.SenderDeleted == false
                     && m.Sender.UserName == currentUsername
                 )
+                .MarkUnreadAsRead(currentUsername)
                 .OrderBy(m => m.MessageSent)
                 .ProjectTo<MessageDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
-
-            var unreadMessages = messages.Where(m => m.DateRead == null
-                && m.RecipientUsername == currentUsername).ToList();
-
-            if (unreadMessages.Any()) {
-                foreach(var message in unreadMessages) {
-                    message.DateRead = DateTime.UtcNow;
-                }
-                //await _context.SaveChangesAsync();
-            }
 
             return messages;
         }

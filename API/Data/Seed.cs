@@ -30,9 +30,10 @@ namespace API.Data
             }
 
             foreach(var user in users) {
-                 user.UserName = user.UserName.ToLower();
-                 await userManager.CreateAsync(user, "Pa$$w0rd");
-                 await userManager.AddToRoleAsync(user, "Member");
+                user.Photos.First().IsApproved = true;
+                user.UserName = user.UserName.ToLower();
+                await userManager.CreateAsync(user, "Pa$$w0rd");
+                await userManager.AddToRoleAsync(user, "Member");
             }
 
             var admin = new AppUser {
