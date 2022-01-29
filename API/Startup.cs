@@ -78,7 +78,7 @@ namespace API
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<PrecenceHub>("hubs/presence");
-                endpoints.MapHub<MessagegHub>("hubs/message");
+                endpoints.MapHub<MessageHub>("hubs/message");
             });
         }
     }
